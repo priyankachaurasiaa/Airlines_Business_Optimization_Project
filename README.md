@@ -192,4 +192,6 @@ Q7. Calculate by how much the total annual turnover could increase by giving all
 
 * These summary points underscore the importance of revenue analysis, the role of occupancy in profitability, and the need to balance profit goals with delivering quality service and safety.
 
-|---------------------------------------------------------------------------------------------------------------------------|
+## Contact Information
+
+- For inquiries or further information, please contact Priyanka_Chaurasia at priyankachaurasia7050@gmail.com
