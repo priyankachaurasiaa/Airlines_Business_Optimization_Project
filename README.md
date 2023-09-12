@@ -1,25 +1,27 @@
-# Airlines_Business_Project
+# Airlines_Business_Project  
+![Airline_project_logo](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/1a6c1332-c022-47e0-ba3b-c0186396f1c0)
 
 "ElevateAir: Enhancing Aviation Profitability via Data-Driven Occupancy Optimization"
 
-- ElevateAir tackles contemporary aviation challenges by examining seat occupancy rates in our diverse aircraft fleet.
-- We aim to enhance profitability, driven by strict regulations, rising costs, and market competition.
-- Our approach relies on insightful data analysis, with the goal of optimizing seat occupancy, ultimately improving both passenger experiences and per-seat profits.
+ElevateAir addresses modern aviation challenges by analyzing our diverse aircraft fleet's occupancy rates. 
+Strict regulations, rising costs and market competition compel us to boost profitability. 
+Through as an insightful data analysys, we aim to optimize seat occupancy, elevating both passenger experiences and per-seat profits. 
+Join us in shaping aviation's future through innovation and data excellence.
 
 ## Table of Contents
 - [Introduction](#introduction)
 - [Installation and Steps Involved](#installation-and-steps-involved)
 - [Objectives](#objectives)
+- [Schema](#schema)
 - [Database and Tables](#database-and-tables)
 - [Preprocessing and Exploration](#preprocessing-and-exploration)
 - [Analysis and Insights](#analysis-and-insights)
 - [Conclusion](#conclusion)
 
 ## Introduction
-
 - Navigating Aviation Challenges: Our aviation fleet thrives on passenger satisfaction. Yet, factors like regulations, costs, and competition challenge profitability.
 - Data-Powered Solution: Through precise data analysis, we're optimizing seat occupancy to counter financial pressures and offer exceptional travel.
-- Revitalizing Industry: This project not only boosts per-seat profits but also revolutionizes aviation economics, inviting you to shape a sustainable future with us.
+- Revitalizing Industry: This project not only boosts per-seat profits but also revolutionizes aviation economics, inviting you to shape a sustainable future with us.  
 
 ## Installation and Steps Involved
 <pre><code>
@@ -66,6 +68,12 @@
 *Elevate Customer Experience:*
 -Prioritize a seamless end-to-end experience for passengers, from booking to arrival. This distinctiveness in a competitive industry will foster customer loyalty.
 
+* The ultimate aim of these objectives is to pinpoint avenues for boosting the occupancy rate on flights with lower performance. 
+This targeted effort has the potential to significantly amplify the airline's profitability.
+
+## Schema  
+![Schema](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/ae4de0b2-b85f-4931-b899-9166dfa3725a)
+
 ## Database and Tables
  <pre><code>
 **List of tables in Database:**
@@ -93,66 +101,95 @@
  <pre><code>
 **Basic Analysis**
 Q1.How many planes have more than 100 seats?
-Q2.How the number of tickets booked and total amount earned changes with the time?
-Q3.Calculate the average charges for each aircraft with different fare conditions?
+Q2. What are the ranges of different airplane models?
+Q3.How the number of tickets booked and total amount earned changes with the time?
+Q4.Calculate the average charges for each aircraft with different fare conditions?
 
 **Analysing Occupancy Rate**
-Q4. For each aircraft, calculate the total revenue per year and the average revenue per ticket.
-Q5. Calculate the average occupancy per aircraft. (occupanct_rate = booked_seat/available_seat)
-Q6. Calculate by how much the total annual turnover could increase by giving all aircraft a 10% higher occupancy rate.
+Q5. For each aircraft, calculate the total revenue per year and the average revenue per ticket.
+Q6. Calculate the average occupancy per aircraft. (occupanct_rate = booked_seat/available_seat)
+Q7. Calculate by how much the total annual turnover could increase by giving all aircraft a 10% higher occupancy rate.
 </code> </pre>
 
-**Number of Tickets Booked with Time**
-![WhatsApp Image 2023-09-07 at 9 42 03 PM](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/4e3c6f95-38db-4063-86dd-3c6ebb0fb70b)
+**Number of Tickets Booked with Time**  
+`plt.figure(figsize=(18,6))`  
+`x = df3.groupby('date')[['date']].count()`  
+`plt.plot(x.index, x['date'], marker='^')`  
+`plt.title('Number of tickets booked with time')`  
+`plt.xlabel('Date')`  
+`plt.ylabel('No of tickets')`  
+`plt.grid('b')`  
+`plt.show()`  
 
-**Total Amount Earned with Time**
-![WhatsApp Image 2023-09-07 at 9 42 02 PM](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/ff1e549f-14c3-41d0-803e-19db858e26db)
+![No_of_ticket_booked_with_time](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/ff26a97c-ea09-4f75-8a8d-2b28094ee530)
 
-![WhatsApp Image 2023-09-07 at 9 42 01 PM](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/be64aed7-954b-49bd-b26a-6e359fc53e35)
+**Total Amount Earned with Time**  
+`plt.figure(figsize=(18,6))`  
+`y = df3.groupby('date')[['total_amount']].sum()    # to get into dataframe use 2D list`  
+`plt.plot(y.index, y['total_amount'], marker='^')`  
+`plt.title('Total amount earned with Time')`  
+`plt.xlabel('Date')`  
+`plt.ylabel('Total amount')`  
+`plt.grid('b')`  
+`plt.show()`  
+![Total_amount_earned_with_time](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/14737a85-1ed2-4f23-8e15-4e15369d2323)
+
+**Airplane Model with Ranges**  
+`plt.figure(figsize=(10,5))`  
+`ax = sns.barplot(x='model',y='range', data=aircrafts_data, palette = 'Paired')`  
+`for i in ax.containers:`  
+`    ax.bar_label(i)`  
+`plt.title('Airplane Models with their Ranges')`  
+`plt.xticks(rotation=45)`  
+`plt.show()`  
+![Airplane_Model_with_Ranges](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/77626aac-d5cc-472c-9c56-42e62828a8d9)
+
+**Aircraft Code vs Average Charges**  
+`sns.barplot(data=df4, x=df4['aircraft_code'], y=df4['average'], hue=df4['fare_conditions'])`  
+`plt.title('Aircraft code vs Average charges with different Fare conditions')`
+![Aircraft_code_vs_avg_charges](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/0263c584-3c11-456a-bcf1-8f55a088fbed)
 
 **Final Results**
-![WhatsApp Image 2023-09-07 at 9 42 02 PM (1)](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/cf5f88b4-ca8a-4221-840a-46f72004e6f9)
-
+![Final_results](https://github.com/priyankachaurasiaa/Airlines_Business_Optimization_Project/assets/134799886/ec537a99-478e-4ee3-a2c9-2c8ebc7c0c26)
 
 **Graphical Comparison:**
-Utilized bar graphs to visually compare average costs across different fare conditions per aircraft.
+- Utilized bar graphs to visually compare average costs across different fare conditions per aircraft.
+- Created a bar chart to visualize and compare the ranges of different airplanes.
 
 **Fare Types:**
-Observed three fare types: business, economy, and comfort. Comfort class is unique to the 773 aircraft, while CN1 and CR2 planes exclusively offer economy class.
+- Observed three fare types: business, economy, and comfort. Comfort class is unique to the 773 aircraft, while CN1 and CR2 planes exclusively offer economy class.
 
 **Price Comparison:**
-Noted a consistent pattern where business class charges consistently exceeded economy class charges across all aircraft.
+- Noted a consistent pattern where business class charges consistently exceeded economy class charges across all aircraft.
 
 **Revenue Analysis for Profit Maximization:**
-Examining overall yearly income and average revenue per ticket is crucial for airlines to optimize profitability.
-Insights from these metrics guide decisions on aircraft types, itineraries, pricing optimization, and resource allocation.
+- Examining overall yearly income and average revenue per ticket is crucial for airlines to optimize profitability.
+- Insights from these metrics guide decisions on aircraft types, itineraries, pricing optimization, and resource allocation.
 
 **Revenue and Occupancy Impact:**
-Total revenue, average revenue per ticket, and average occupancy per aircraft are critical indicators.
-SU9 aircraft leads in total revenue with lower business and economy class prices.
-CN1 has lower revenue due to offering only economy class at a minimal price.
+- Total revenue, average revenue per ticket, and average occupancy per aircraft are critical indicators.
+- SU9 aircraft leads in total revenue with lower business and economy class prices.
+- CN1 has lower revenue due to offering only economy class at a minimal price.
 
 **Occupancy's Role in Revenue:**
-Average occupancy per aircraft reflects how effectively seats are filled.
-Higher occupancy rates improve revenue, profitability, and operational efficiency.
-Calculated by dividing booked seats by total seats.
+- Average occupancy per aircraft reflects how effectively seats are filled.
+- Higher occupancy rates improve revenue, profitability, and operational efficiency.
+- Calculated by dividing booked seats by total seats.
 
-## Conclusion
+## Conclusion  
 
 **Revenue Data Analysis for Profitability:**
-Analyzing total yearly revenue, average ticket revenue, and aircraft occupancy is vital for maximizing airline profitability.
-Insights from these metrics guide pricing, route adjustments, and operational improvements.
+- Analyzing total yearly revenue, average ticket revenue, and aircraft occupancy is vital for maximizing airline profitability.
+- Insights from these metrics guide pricing, route adjustments, and operational improvements.
 
 **Occupancy's Role in Profitability:**
-Greater occupancy rates enhance profitability by maximizing revenue and minimizing vacant seat costs.
-Pricing adjustment based on aircraft condition and facility is crucial for attracting passengers without compromising on quality.
+- Greater occupancy rates enhance profitability by maximizing revenue and minimizing vacant seat costs.
+- Pricing adjustment based on aircraft condition and facility is crucial for attracting passengers without compromising on quality.
 
 **Balancing Profit and Quality:**
-While boosting occupancy is crucial, maintaining customer satisfaction and safety is equally important.
-Airlines should adopt a data-driven approach to revenue analysis and optimization for sustainable success in a competitive industry.
+- While boosting occupancy is crucial, maintaining customer satisfaction and safety is equally important.
+- Airlines should adopt a data-driven approach to revenue analysis and optimization for sustainable success in a competitive industry.
 
 * These summary points underscore the importance of revenue analysis, the role of occupancy in profitability, and the need to balance profit goals with delivering quality service and safety.
 
-## Contact Information
-
-- For inquiries or further information, please contact Priyanka_Chaurasia at priyankachaurasia7050@gmail.com
+|---------------------------------------------------------------------------------------------------------------------------|
