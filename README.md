@@ -8,7 +8,7 @@ Strict regulations, rising costs and market competition compel us to boost profi
 Through as an insightful data analysys, we aim to optimize seat occupancy, elevating both passenger experiences and per-seat profits. 
 Join us in shaping aviation's future through innovation and data excellence.
 
-## Table of Contents
+## 📚 Table of Contents
 - [Introduction](#introduction)
 - [Installation and Steps Involved](#installation-and-steps-involved)
 - [Objectives](#objectives)
